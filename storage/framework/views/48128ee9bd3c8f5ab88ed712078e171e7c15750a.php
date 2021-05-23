@@ -1,6 +1,4 @@
-@extends('layouts.default')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!--================Home Banner Area =================-->
     <section class="banner_area">
         <div class="banner_inner d-flex align-items-center"  style="background-color: #030F27">
@@ -50,8 +48,8 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <form class="row contact_form" action="{{url('/request')}}" method="post">
-                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                    <form class="row contact_form" action="<?php echo e(url('/request')); ?>" method="post">
+                        <input name="_token" type="hidden" value="<?php echo e(csrf_token()); ?>"/>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя">
@@ -77,9 +75,9 @@
         </div>
     </section>
     <!--================Contact Area =================-->
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('after-footer')
+<?php $__env->startSection('after-footer'); ?>
     <!--================Contact Success and Error message Area =================-->
     <div id="success" class="modal modal-message fade" role="dialog">
         <div class="modal-dialog">
@@ -111,12 +109,14 @@
         </div>
     </div>
     <!--================End Contact Success and Error message Area =================-->
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('custom-js')
+<?php $__env->startSection('custom-js'); ?>
 
     <!-- contact js -->
     <script src="/js/jquery.form.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/contact.js"></script>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\chia server\OneDrive\Рабочий стол\aslan\boiau.kz\boiau.kz\resources\views/pages/contact.blade.php ENDPATH**/ ?>

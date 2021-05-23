@@ -5,7 +5,7 @@
                 Будьте в курсе новых акций и спецпредложений!</h2>
             <p>Оствьте ваше имя и телефон!</p>
         </div>
-        <form class="banner_form" action="{{ url('/contact_request') }}" method="post">
+        <form class="banner_form" action="{{url('/contact_request')}}" method="post">
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
             <div class="form-group row">
                 <div class="col-md-4">

@@ -59,6 +59,10 @@
             width: 100%;
             min-height: 350px!important;
         }
+        div{
+            position: relative;
+        }
+
     </style>
 @stop
 @section('title'){{$title}}@stop
@@ -195,7 +199,7 @@
                                      alt="Sirius Light Светильники {{$cur_product->title}}">
                                 <a href="{{$cur_product->url}}">
                                     <div class="product_in_category">
-                                        <h4 style="color: red;">{{intval($score*100)}}</h4>
+{{--                                        <h4 style="color: red;">{{intval($score*100)}}</h4>--}}
                                         <h6>{{$cur_product->title}}</h6>
                                     </div>
                                 </a>

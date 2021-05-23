@@ -1,8 +1,6 @@
-@extends('layouts.default')
+<?php $__env->startSection('title', 'Cart'); ?>
 
-@section('title', 'Cart')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <style>
         body{
             background-color: #030F27;
@@ -51,29 +49,29 @@
             </div>
             <div class="row cart_items_row">
                 <div class="col">
-                    @foreach($items as $item)
+                    <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <!-- Cart Item -->
                     <div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
                         <!-- Name -->
                         <div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
                             <div class="cart_item_image">
-                                <div><img src="{{$item->attributes->image_url}}" alt=""></div>
+                                <div><img src="<?php echo e($item->attributes->image_url); ?>" alt=""></div>
                             </div>
                             <div class="cart_item_name_container">
-                                <div class="cart_item_name"><a href="{{$item->product_url}}">{{$item->name}}</a></div>
+                                <div class="cart_item_name"><a href="<?php echo e($item->product_url); ?>"><?php echo e($item->name); ?></a></div>
                             </div>
                         </div>
                         <!-- Price -->
-                        <div class="cart_item_price">{{$item->price}} тг</div>
+                        <div class="cart_item_price"><?php echo e($item->price); ?> тг</div>
                         <!-- Quantity -->
                         <div class="cart_item_quantity">
-                            {{$item->quantity}} шт.
+                            <?php echo e($item->quantity); ?> шт.
                         </div>
                         <!-- Total -->
 
-                        <div class="cart_item_total">{{$item->attributes->subtotal}} тг</div>
+                        <div class="cart_item_total"><?php echo e($item->attributes->subtotal); ?> тг</div>
                     </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
             <div class="row row_cart_buttons">
@@ -81,7 +79,7 @@
                     <div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
                         <div class="button continue_shopping_button"><a href="/stroymarket">Продолжить покупки</a></div>
                         <div class="cart_buttons_right ml-lg-auto">
-                            <div class="button clear_cart_button"><a href="{{route('cartClear')}}">Очистить корзину</a></div>
+                            <div class="button clear_cart_button"><a href="<?php echo e(route('cartClear')); ?>">Очистить корзину</a></div>
                             <div class="button update_cart_button"><a href="/cart">Обновить корзину</a></div>
                         </div>
                     </div>
@@ -95,8 +93,8 @@
 
                         <div class="cart_total_container">
                             <ul>
-                            <form class="row contact_form" action="{{url('/send_to_mail')}}" method="post" id="contactForm" novalidate="novalidate">
-                                <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                            <form class="row contact_form" action="<?php echo e(url('/send_to_mail')); ?>" method="post" id="contactForm" novalidate="novalidate">
+                                <input name="_token" type="hidden" value="<?php echo e(csrf_token()); ?>"/>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя">
@@ -111,7 +109,7 @@
                             <ul>
                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                     <div class="cart_total_title">К оплате</div>
-                                    <div class="cart_total_value ml-auto">{{$total}} тг</div>
+                                    <div class="cart_total_value ml-auto"><?php echo e($total); ?> тг</div>
                                 </li>
                             </ul>
                         </div>
@@ -121,9 +119,9 @@
             </div>
         </div>
     </div>
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('after-footer')
+<?php $__env->startSection('after-footer'); ?>
     <div id="success" class="modal modal-message fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -150,8 +148,10 @@
             </div>
         </div>
     </div>
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('custom-js')
+<?php $__env->startSection('custom-js'); ?>
     <script src="js/cart.js"></script>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\chia server\OneDrive\Рабочий стол\aslan\boiau.kz\boiau.kz\resources\views/pages/cart.blade.php ENDPATH**/ ?>

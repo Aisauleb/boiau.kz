@@ -59,6 +59,10 @@
             width: 100%;
             min-height: 350px!important;
         }
+        div{
+            position: relative;
+        }
+
     </style>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title'); ?><?php echo e($title); ?><?php $__env->stopSection(); ?>
@@ -181,6 +185,27 @@
                             <?php
                             $rec_count = 0;
                             ?>
+                        <?php $__currentLoopData = $recommendations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rec => $score): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($score==1.0 or $rec_count==3): ?>
+                                <?php continue; ?>
+                            <?php endif; ?>
+
+                            <?php
+                            $rec_count++;
+                            $cur_product = App\Product::where('id',$rec)->first();
+                            ?>
+
+                            <div class="projects_item col-md-4">
+                                <img class="product-image" src="<?php echo e($cur_product->image_url); ?>"
+                                     alt="Sirius Light Светильники <?php echo e($cur_product->title); ?>">
+                                <a href="<?php echo e($cur_product->url); ?>">
+                                    <div class="product_in_category">
+
+                                        <h6><?php echo e($cur_product->title); ?></h6>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
                 </div>

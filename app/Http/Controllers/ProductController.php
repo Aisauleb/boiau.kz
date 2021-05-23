@@ -20,7 +20,7 @@ class ProductController extends BaseController
         $product = Product::where('slug',$slug)->first();
         $categories = Category::with('childrenRecursive')->whereNull('parent_id')->get();
         $client = new \GuzzleHttp\Client();
-        $url = 'http://91.201.215.30/smart/'.strval($product->id);
+        $url = 'http://easypick.kz/smart/'.strval($product->id);
         $response = $client->get($url)->getBody();
         $obj = json_decode($response);
         $recommendations = $obj->response->data;

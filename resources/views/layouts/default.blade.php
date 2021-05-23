@@ -19,12 +19,6 @@
         @yield('custom-css')
     </head>
     <body>
-    <script>
-        (function(w,d,u){
-            var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
-            var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
-        })(window,document,'https://cdn-ru.bitrix24.ru/b17636616/crm/site_button/loader_1_fkw4y4.js');
-    </script>
     <header class="header_area">
         @include('includes.header')
     </header>
@@ -54,5 +48,11 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjBmjw5vmxMG-7MLoofbQQ0xK84q1Be0"></script>
     <script src="/js/gmaps.min.js"></script>
     <script src="/js/theme.js"></script>
+    <script>
+        (function(w,d,u){
+            var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+            var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn-ru.bitrix24.ru/b17619938/crm/site_button/loader_4_f7pgep.js');
+    </script>
     </body>
 </html>
